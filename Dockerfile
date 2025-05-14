@@ -1,19 +1,22 @@
 #use official slim python image
-FROM python:slim
+FROM rust:slim
 
 #update repository
 RUN apt-get update
 
 #install needed packages
 #hddtemp package is deprecated as of debian bookworm, see https://groups.google.com/g/linux.debian.bugs.dist/c/fRxG4xEJQUs
-RUN apt-get install -y smartmontools hdparm fancontrol lm-sensors kmod git
+RUN apt-get install -y smartmontools hdparm fancontrol lm-sensors kmod git 
+RUN apt-get install -y sdparm hddtemp
 
 #install hddfancontrol
-RUN pip3 install setuptools
+#RUN pip3 install setuptools
 RUN git clone https://github.com/desbma/hddfancontrol
 RUN cd hddfancontrol && \
-    chmod +x setup.py && \
-    python3 setup.py install
+    cargo build --release && \
+    install -Dm 755 -t /usr/local/bin target/release/hddfancontrol
+RUN sudo install -Dm 644 hddfancontrol/systemd/hddfancontrol.service /etc/systemd/system/hddfancontrol.service
+RUN sudo install -Dm 644 hddfancontrol/systemd/hddfancontrol.conf /etc/conf.d/hddfancontrol
 RUN rm -rf hddfancontrol
 
 
