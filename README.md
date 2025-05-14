@@ -1,3 +1,6 @@
+!!!!! Warning: Not ready - WIP !!!!!
+
+
 # docker_hddfancontrol
 simple Docker image for hddfancontrol by desbma
 https://github.com/desbma/hddfancontrol
