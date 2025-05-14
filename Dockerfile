@@ -7,7 +7,7 @@ RUN apt-get update
 #install needed packages
 #hddtemp package is deprecated as of debian bookworm, see https://groups.google.com/g/linux.debian.bugs.dist/c/fRxG4xEJQUs
 RUN apt-get install -y smartmontools hdparm fancontrol lm-sensors kmod git 
-RUN apt-get install -y sdparm hddtemp
+RUN apt-get install -y sdparm
 
 #install hddfancontrol
 #RUN pip3 install setuptools
@@ -15,8 +15,8 @@ RUN git clone https://github.com/desbma/hddfancontrol
 RUN cd hddfancontrol && \
     cargo build --release && \
     install -Dm 755 -t /usr/local/bin target/release/hddfancontrol
-RUN sudo install -Dm 644 hddfancontrol/systemd/hddfancontrol.service /etc/systemd/system/hddfancontrol.service
-RUN sudo install -Dm 644 hddfancontrol/systemd/hddfancontrol.conf /etc/conf.d/hddfancontrol
+RUN install -Dm 644 hddfancontrol/systemd/hddfancontrol.service /etc/systemd/system/hddfancontrol.service
+RUN install -Dm 644 hddfancontrol/systemd/hddfancontrol.conf /etc/conf.d/hddfancontrol
 #RUN rm -rf hddfancontrol
 
 
