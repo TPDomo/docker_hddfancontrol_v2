@@ -7,4 +7,4 @@ git pull
 sudo docker build -t docker_hddfancontrol_v2 .
 
 #testing:
-docker run --interactive --tty --rm docker_hddfancontrol_v2 bash
+sudo docker run --interactive --tty --rm docker_hddfancontrol_v2 bash
