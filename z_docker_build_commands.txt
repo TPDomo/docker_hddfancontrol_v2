@@ -1,0 +1,10 @@
+git clone https://github.com/TPDomo/docker_hddfancontrol_v2.git
+
+cd docker_hddfancontrol_v2
+
+git pull
+
+sudo docker build -t docker_hddfancontrol_v2 .
+
+#testing:
+docker run --interactive --tty --rm docker_hddfancontrol_v2 bash
