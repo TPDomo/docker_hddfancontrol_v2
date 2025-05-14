@@ -1,0 +1,24 @@
+./hddfancontrol daemon -h
+Start fan control daemon
+
+Usage: hddfancontrol daemon [OPTIONS] --drives <DRIVES>... --pwm <PWM>...
+
+Options:
+  -d, --drives <DRIVES>...
+          Drive path(s) to get temperature from (ie. `/dev/sdX`). Interface type selectors are also supported (ie. `ata` to select all drives matching `/dev/disk/by-id/ata-*`)
+  -p, --pwm <PWM>...
+          PWM filepath(s) with values at which the fan start and stop moving. Use the 'pwm-test' command to find these values. Format is `PWM_PATH:STAT_VAL:STOP_VAL` (ie. `/sys/class/hwmon/hwmonX/device/pwmY:200:75`)
+  -t, --drive-temp-range <TEMP> <TEMP>
+          Temperatures in Celcius at which the fan(s) will be set to minimum/maximum speed [default: 30 50]
+  -m, --min-fan-speed-prct <MIN_FAN_SPEED_PRCT>
+          Minimum percentage of full fan speed to set the fan to. Never set to 0 unless you have other fans to cool down your system, or a case specially designed for passive cooling [default: 20]
+  -i, --interval <INTERVAL>
+          Interval to check temperature and adjust fan speed, ie. '30s', '3min' [default: 20s]
+  -w, --hwmons <HWMONS>
+          Also control fan speed according to these additional hwmon temperature probes. Format is `HWMON_PATH[:TEMP_MIN_SPEED:TEMP_MAX_SPEED]` (ie. `/sys/devices/platform/coretemp.0/hwmon/hwmonX/tempY_input:45:75`). If missing, target temperature range will be autodetected or use a default value. WARNING: Don't use for CPU sensors, unless you have low TDP CPU. You may also need to set a low value for -i/--interval parameter to react quickly to sudden temperature increase
+      --hddtemp-daemon-port <HDDTEMP_DAEMON_PORT>
+          hddtemp daemon TCP port [default: 7634]
+  -r, --restore-fan-settings
+          Restore fan settings on exit, otherwise the fans are run at full speed on exit
+  -h, --help
+          Print help
