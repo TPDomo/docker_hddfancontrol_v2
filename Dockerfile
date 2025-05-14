@@ -17,7 +17,7 @@ RUN cd hddfancontrol && \
     install -Dm 755 -t /usr/local/bin target/release/hddfancontrol
 RUN sudo install -Dm 644 hddfancontrol/systemd/hddfancontrol.service /etc/systemd/system/hddfancontrol.service
 RUN sudo install -Dm 644 hddfancontrol/systemd/hddfancontrol.conf /etc/conf.d/hddfancontrol
-RUN rm -rf hddfancontrol
+#RUN rm -rf hddfancontrol
 
 
 #start hddtemp daemon and expose port
