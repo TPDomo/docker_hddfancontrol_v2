@@ -24,7 +24,7 @@ declare -a args=()
 
 echo ${args[@]}
 
-hddfancontrol ${args[@]} &
+hddfancontrol daemon ${args[@]} &
 
 # Wait for any process to exit
 wait -n
