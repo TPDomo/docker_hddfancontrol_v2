@@ -27,6 +27,8 @@ RUN apt-get update
 #hddtemp package is deprecated as of debian bookworm, see https://groups.google.com/g/linux.debian.bugs.dist/c/fRxG4xEJQUs
 RUN apt-get install -y smartmontools hdparm fancontrol lm-sensors kmod git sdparm
 
+RUN apt-get clean -y
+
 COPY --from=build /usr/local/bin/hddfancontrol /usr/local/bin/hddfancontrol
 RUN chmod 755 /usr/local/bin/hddfancontrol
 COPY --from=build /etc/systemd/system/hddfancontrol.service /etc/systemd/system/hddfancontrol.service
