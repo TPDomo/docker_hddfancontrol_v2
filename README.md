@@ -1,14 +1,11 @@
 # !!!!! Warning: Not ready - WIP !!!!!
 
-.
-.
-.
-.
-.
-.
-.
-.
-.
+!
+!
+!
+!
+!
+!
 
 ## docker_hddfancontrol
 simple Docker image for hddfancontrol by desbma
@@ -38,7 +35,7 @@ services:
       - SYS_MODULE
     environment:
       - DRIVE_FILEPATHS=/dev/sda1 /dev/sdb1 /dev/sdf1 /dev/sdg1 /dev/sdd1
-      - DRIVE_FILEPATHS=/dev/disk/by-id/ata-SAMSUNG_HD501LJ-part1 /dev/disk/by-id/ata-WDC_WD15EADS-part1 /dev/disk/by-id/ata-ST4000VN006-part1 /dev/disk/by-id/ata-ST4000VN008-part1
+#      - DRIVE_FILEPATHS=/dev/disk/by-id/ata-SAMSUNG_HD501LJ-part1 /dev/disk/by-id/ata-WDC_WD15EADS-part1 /dev/disk/by-id/ata-ST4000VN006-part1 /dev/disk/by-id/ata-ST4000VN008-part1
       - FAN_PWM_FILEPATH=/sys/class/hwmon/hwmon4/pwm1:70:20 /sys/class/hwmon/hwmon4/pwm3:70:20 /sys/class/hwmon/hwmon4/pwm4:70:20 /sys/class/hwmon/hwmon4/pwm5:70:20
 
 #      - FAN_START_VALUE=70 80
