@@ -1,4 +1,4 @@
-#### !!!!! Warning: Not ready - WIP !!!!!
+# !!!!! Warning: Not ready - WIP !!!!!
 
 
 
@@ -10,7 +10,7 @@
 
 
 
-# docker_hddfancontrol
+## docker_hddfancontrol
 simple Docker image for hddfancontrol by desbma
 https://github.com/desbma/hddfancontrol
 
