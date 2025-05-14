@@ -2,6 +2,8 @@
 
 #detect sensors and load modules
 sensors-detect --auto | sed -n '/# Chip drivers/,/#----cut here----/{//!p;}' | xargs -n1 modprobe
+modprobe coretemp
+modprobe nct6775
 
 #create argument array
 declare -a args=()
