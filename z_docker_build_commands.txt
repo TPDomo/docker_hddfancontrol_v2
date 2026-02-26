@@ -4,7 +4,9 @@ cd docker_hddfancontrol_v2
 
 git pull
 
-sudo docker build -t docker_hddfancontrol_v2 .
+#sudo docker build -t docker_hddfancontrol_v2 .
+sudo docker --debug build -t docker_hddfancontrol_v2 .
 
 #testing:
-sudo docker run --interactive --tty --rm docker_hddfancontrol_v2 bash
+#sudo docker run --interactive --tty --rm docker_hddfancontrol_v2 bash
+sudo docker run --privileged --cap-add SYS_RAWIO --cap-add SYS_MODULE --device /dev/i2c-0 --device /dev/i2c-1 --volume /lib/modules:/lib/modules:ro --volume /dev:/dev --env DRIVE_FILEPATHS="/dev/disk/by-id/ata-ST12000NE0007-2GT116_ZJV3PA2J-part1 /dev/disk/by-id/ata-ST12000NE0008-2JL101_ZHZ0E5PQ-part1 /dev/disk/by-id/ata-ST12000NE0008-2JL101_ZHZ0TR10-part1 /dev/disk/by-id/ata-ST12000NE0008-2JL101_ZHZ658ZR-part1 /dev/disk/by-id/ata-Samsung_SSD_850_PRO_256GB_S1SUNSAFA28321V-part1 /dev/disk/by-id/ata-Samsung_SSD_850_PRO_256GB_S1SUNSAFC11887N-part1" --env FAN_PWM_FILEPATH="/sys/class/hwmon/hwmon10/pwm1:70:20 /sys/class/hwmon/hwmon10/pwm3:70:20 /sys/class/hwmon/hwmon10/pwm4:70:20 /sys/class/hwmon/hwmon10/pwm5:70:20" --interactive --tty --rm docker_hddfancontrol_v2 bash
