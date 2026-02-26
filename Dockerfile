@@ -1,12 +1,13 @@
 #use official slim python image
-FROM rust:slim AS build
+#FROM rust:slim AS build
+FROM rust:slim-trixie AS build
 
 #update repository
 RUN apt-get update
 
 #install needed packages
 #hddtemp package is deprecated as of debian bookworm, see https://groups.google.com/g/linux.debian.bugs.dist/c/fRxG4xEJQUs
-RUN apt-get install -y smartmontools hdparm fancontrol lm-sensors kmod git sdparm
+RUN apt-get install -y smartmontools hdparm fancontrol lm-sensors kmod git sdparm i2c-tools
 
 #install hddfancontrol
 RUN git clone https://github.com/desbma/hddfancontrol
@@ -18,14 +19,15 @@ RUN install -Dm 644 hddfancontrol/systemd/hddfancontrol.conf /etc/conf.d/hddfanc
 RUN rm -rf hddfancontrol
 
 
-FROM debian:bookworm-slim
+#FROM debian:bookworm-slim
+FROM debian:trixie-slim
 
 #update repository
 RUN apt-get update
 
 #install needed packages
 #hddtemp package is deprecated as of debian bookworm, see https://groups.google.com/g/linux.debian.bugs.dist/c/fRxG4xEJQUs
-RUN apt-get install -y smartmontools hdparm fancontrol lm-sensors kmod git sdparm
+RUN apt-get install -y smartmontools hdparm fancontrol lm-sensors kmod git sdparm i2c-tools
 
 RUN apt-get clean -y
 
