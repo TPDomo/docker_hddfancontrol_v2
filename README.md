@@ -25,19 +25,25 @@ This is a docker image which includes the following programs to run **hddfancont
 version: "3"
 services:
   hddfancontrol:
-    image: ghcr.io/fightforlife/docker_hddfancontrol:master
+    #image: ghcr.io/fightforlife/docker_hddfancontrol:master
+    image: docker_hddfancontrol_v2:latest
     restart: unless-stopped
     volumes:
       - /lib/modules:/lib/modules:ro #needed for hwmon
       - /dev:/dev:ro #needed for disks by id
+    devices:
+      - /dev/i2c-0:/dev/i2c-0
+      - /dev/i2c-1:/dev/i2c-1
     privileged: true
     cap_add:
       - SYS_MODULE
+      #- SYS_RAWIO #is it really needed?
     environment:
-      - DRIVE_FILEPATHS=/dev/sda1 /dev/sdb1 /dev/sdf1 /dev/sdg1 /dev/sdd1
-#      - DRIVE_FILEPATHS=/dev/disk/by-id/ata-SAMSUNG_HD501LJ-part1 /dev/disk/by-id/ata-WDC_WD15EADS-part1 /dev/disk/by-id/ata-ST4000VN006-part1 /dev/disk/by-id/ata-ST4000VN008-part1
-      - FAN_PWM_FILEPATH=/sys/class/hwmon/hwmon4/pwm1:70:20 /sys/class/hwmon/hwmon4/pwm3:70:20 /sys/class/hwmon/hwmon4/pwm4:70:20 /sys/class/hwmon/hwmon4/pwm5:70:20
-
+      #- DRIVE_FILEPATHS=/dev/sda1 /dev/sdb1 /dev/sdf1 /dev/sdg1 /dev/sdd1
+      #- DRIVE_FILEPATHS=/dev/disk/by-id/ata-SAMSUNG_HD501LJ-part1 /dev/disk/by-id/ata-WDC_WD15EADS-part1 /dev/disk/by-id/ata-ST4000VN006-part1 /dev/disk/by-id/ata-ST4000VN008-part1
+      - DRIVE_FILEPATHS=/dev/disk/by-id/ata-ST12000NE0007-2GT116_ZJV3PA2J-part1 /dev/disk/by-id/ata-ST12000NE0008-2JL101_ZHZ0E5PQ-part1 /dev/disk/by-id/ata-ST12000NE0008-2JL101_ZHZ0TR10-part1 /dev/disk/by-id/ata-ST12000NE0008-2JL101_ZHZ658ZR-part1 /dev/disk/by-id/ata-Samsung_SSD_850_PRO_256GB_S1SUNSAFA28321V-part1 /dev/disk/by-id/ata-Samsung_SSD_850_PRO_256GB_S1SUNSAFC11887N-part1
+      #- FAN_PWM_FILEPATH=/sys/class/hwmon/hwmon4/pwm1:70:20 /sys/class/hwmon/hwmon4/pwm3:70:20 /sys/class/hwmon/hwmon4/pwm4:70:20 /sys/class/hwmon/hwmon4/pwm5:70:20
+      - FAN_PWM_FILEPATH=/sys/class/hwmon/hwmon10/pwm1:70:20 /sys/class/hwmon/hwmon10/pwm3:70:20 /sys/class/hwmon/hwmon10/pwm4:70:20 /sys/class/hwmon/hwmon10/pwm5:70:20
 #      - FAN_START_VALUE=70 80
 #      - FAN_STOP_VALUE=20 30
 #      - MIN_TEMP=40
