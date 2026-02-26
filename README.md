@@ -43,7 +43,7 @@ services:
       #- DRIVE_FILEPATHS=/dev/disk/by-id/ata-SAMSUNG_HD501LJ-part1 /dev/disk/by-id/ata-WDC_WD15EADS-part1 /dev/disk/by-id/ata-ST4000VN006-part1 /dev/disk/by-id/ata-ST4000VN008-part1
       - DRIVE_FILEPATHS=/dev/disk/by-id/ata-ST12000NE0007-2GT116_ZJV3PA2J-part1 /dev/disk/by-id/ata-ST12000NE0008-2JL101_ZHZ0E5PQ-part1 /dev/disk/by-id/ata-ST12000NE0008-2JL101_ZHZ0TR10-part1 /dev/disk/by-id/ata-ST12000NE0008-2JL101_ZHZ658ZR-part1 /dev/disk/by-id/ata-Samsung_SSD_850_PRO_256GB_S1SUNSAFA28321V-part1 /dev/disk/by-id/ata-Samsung_SSD_850_PRO_256GB_S1SUNSAFC11887N-part1
       #- FAN_PWM_FILEPATH=/sys/class/hwmon/hwmon4/pwm1:70:20 /sys/class/hwmon/hwmon4/pwm3:70:20 /sys/class/hwmon/hwmon4/pwm4:70:20 /sys/class/hwmon/hwmon4/pwm5:70:20
-      - FAN_PWM_FILEPATH=/sys/class/hwmon/hwmon10/pwm1:70:20 /sys/class/hwmon/hwmon10/pwm3:70:20 /sys/class/hwmon/hwmon10/pwm4:70:20 /sys/class/hwmon/hwmon10/pwm5:70:20
+      - FAN_PWM_FILEPATH=/sys/class/hwmon/hwmon10/pwm1:70:20 /sys/class/hwmon/hwmon10/pwm2:70:20 /sys/class/hwmon/hwmon10/pwm4:70:20 /sys/class/hwmon/hwmon10/pwm5:70:20
 #      - FAN_START_VALUE=70 80
 #      - FAN_STOP_VALUE=20 30
 #      - MIN_TEMP=40
